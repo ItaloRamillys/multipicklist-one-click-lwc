@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Controle de filas" variant="narrow" icon-name="standard:user">
+        <div class="slds-form-element slds-p-around_medium" role="group" aria-labelledby="picklist-group-label">
+            <div class="slds-form-element__control">
+                <div class="slds-dueling-list">
+                    <div class="slds-dueling-list__column slds-dueling-list__column_responsive">
+                        <span class="slds-form-element__label" id="label-103">Usuários disponíveis</span>
+                        <div class="slds-dueling-list__options">
+                            <ul aria-describedby="option-drag-label" aria-labelledby="label-103" aria-multiselectable="true" class="slds-listbox slds-listbox_vertical" role="listbox">
+                                <template for:each={groupMembersNotInQueue} for:item="userOut">
+
+                                    <li data-side="left" key={userOut.Id} value={userOut.Id} class="slds-listbox__item slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" onclick={handleClickMoveUserToRight}>
+                                        {userOut.Name}
+                                    </li>
+
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slds-dueling-list__column">
+                        <button class="slds-button slds-button_icon slds-button_icon-container" title="Move Selection to Selected Languages" onclick={handleClickMoveUserToRight}>
+                            <lightning-icon icon-name="utility:chevronright" size="xx-small" alternative-text="Account" title="Account"></lightning-icon>
+                        </button>
+                        <button class="slds-button slds-button_icon slds-button_icon-container" title="Move Selection to Available Languages" onclick={handleClickMoveUserToLeft}>
+                            <lightning-icon icon-name="utility:chevronleft" size="xx-small" alternative-text="Account" title="Account"></lightning-icon>
+                        </button>
+                    </div>
+                    <div class="slds-dueling-list__column slds-dueling-list__column_responsive">
+                        <span class="slds-form-element__label" id="label-104">Usuários na fila</span>
+                        <div class="slds-dueling-list__options">
+                            <ul aria-describedby="option-drag-label" aria-labelledby="label-103" aria-multiselectable="true" class="slds-listbox slds-listbox_vertical" role="listbox">
+                                <template for:each={groupMembersInQueue} for:item="userOut">
+                                    <li data-side="right" key={userOut.Id} value={userOut.Id} class="slds-listbox__item slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" onclick={handleClickMoveUserToRight}>
+                                        {userOut.Name}
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="slds-card__footer">
+           <lightning-button variant="brand" label="Salvar" title="Salvar" onclick={handleSaveClick}></lightning-button>
+        </footer>
+    </lightning-card>
+</template>
