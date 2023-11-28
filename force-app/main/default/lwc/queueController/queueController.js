@@ -14,22 +14,22 @@ export default class QueueController extends LightningElement {
     @wire (getListMembers,{queueId: '$queueId'})queueFunction({ error, data }) 
     {
         if (data) {
-            console.log('In: ');
-            console.log(data);
+            //console.log('In: ');
+            //console.log(data);
             this.groupMembersInQueue = data;
         } else if (error) {
-            console.log('erro IN' + error);
+            //console.log('erro IN' + error);
         }
     }
     
     @wire (getListMembersOut,{queueId: '$queueId'})queueOutFunction({ error, data }) 
     {
         if (data) {
-            console.log('Out: ');
-            console.log(data);
+            //console.log('Out: ');
+            //console.log(data);
             this.groupMembersNotInQueue = data;
         } else if (error) {
-            console.log('erro OUT' + error);
+            //console.log('erro OUT' + error);
         }
     }
 
@@ -40,18 +40,18 @@ export default class QueueController extends LightningElement {
             idUserListInQueue.push(element.Id)
         })
         saveNewGroupMembers({userIdList: idUserListInQueue, qId: this.queueId}).then(response => {
-            console.log(response);
-            console.log("SUCESSO");
+            //console.log(response);
+            //console.log("SUCESSO");
         })
         .catch(error => {
-            console.log('this.createError');
-            console.log(JSON.stringify(error))
+            //console.log('this.createError');
+            //console.log(JSON.stringify(error))
         });
     }
 
     handleClickMoveUserToRight(event)
     {
-        console.log('@handleClickMoveUserToRight');
+        //console.log('@handleClickMoveUserToRight');
         let sideUser = event.currentTarget.dataset.side;
         let array = [];
         let aux = "";

@@ -1,0 +1,20 @@
+<template>
+    <lightning-card>
+        <lightning-dual-listbox
+            label="Select/Remove Queues"
+            source-label="Available User(s)"
+            selected-label="Selected User(s)"
+            options={availableUsers}
+            value={selectedUsers}
+            onchange={handleChange}
+            class="slds-m-around_medium">
+        </lightning-dual-listbox>
+        <p slot="footer">
+            <lightning-button
+                variant="brand"
+                label="Save"
+                onclick={saveChanges}>
+            </lightning-button>
+        </p>
+    </lightning-card>    
+</template>
